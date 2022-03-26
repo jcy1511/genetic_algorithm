@@ -1,10 +1,6 @@
 import random as rd
 from practice import practice
 
-from sympy import false, true
-
-from practice import practice
-
 great = 0.4         # 우수 개체 선정 비율
 childs = 5          # 한 쌍의 부모 개체들의 자식 개체 수
 mutation_p = 5      # 변이 확률(%, 정수)
@@ -92,7 +88,7 @@ for i in range(initial_generation):         # 초깃값 생성
     history = []
     current_coordinates = [0, 0]
     attempts = 0
-    while true:
+    while True:
         direction = rd.randint(1, 4)*90
         if (0 <= current_coordinates[0] <= 500) and (0 <= current_coordinates[1] <= 500) and (current_coordinates != [500, 500]):
             go(direction)
