@@ -1,7 +1,4 @@
 import random as rd
-import turtle as t
-from typing import final
-import numpy as np
 from practice import practice
 
 from sympy import false, true
@@ -90,8 +87,6 @@ def processing(current_coordinates, attempts, history):
 histories = []      # [좌표, 거리, 시도횟수, 기록, 점수]
 current_coordinates = [0, 0]
 final_result = []   # 최종적으로 시뮬레이션되는 개체들
-
-input("")       # 엔터 누르면 시작
 
 for i in range(initial_generation):         # 초깃값 생성
     history = []
