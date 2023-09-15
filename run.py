@@ -7,7 +7,7 @@ text = turtle.Turtle()
 text2 = turtle.Turtle()
 
 
-def practice(pos):
+def run(pos):
     for i in range(len(pos)):
         t2.pendown()
         text.write(f'{i+1} Generation', font=(10))
