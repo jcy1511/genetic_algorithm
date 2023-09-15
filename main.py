@@ -1,5 +1,5 @@
 import random as rd
-from practice import practice
+from run import run
 
 great = 0.4         # 우수 개체 선정 비율
 childs = 5          # 한 쌍의 부모 개체들의 자식 개체 수
@@ -162,10 +162,10 @@ histories_sorted = histories_sorted[:3]
 print(histories_sorted)
 final_result.append(histories_sorted[0])    # 해당 세대에서 가장 뛰어난 한 개체를 선출
 
-final_result_toPractice = []
+final_result_toRun = []
 o = 0
 while o < len(final_result):
-    final_result_toPractice.append(final_result[o])
+    final_result_toRun.append(final_result[o])
     o += 1
-practice(final_result_toPractice)
+run(final_result_toRun)
 input("")       # 엔터 입력하면 꺼짐
