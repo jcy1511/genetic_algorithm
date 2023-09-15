@@ -162,10 +162,10 @@ histories_sorted = histories_sorted[:3]
 print(histories_sorted)
 final_result.append(histories_sorted[0])    # 해당 세대에서 가장 뛰어난 한 개체를 선출
 
-final_result_toRun = []
+final_result_to_run = []
 o = 0
 while o < len(final_result):
-    final_result_toRun.append(final_result[o])
+    final_result_to_run.append(final_result[o])
     o += 1
-run(final_result_toRun)
+run(final_result_to_run)
 input("")       # 엔터 입력하면 꺼짐
