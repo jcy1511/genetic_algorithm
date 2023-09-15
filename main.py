@@ -11,7 +11,7 @@ n_generation = 15  # 몇 세대까지 진행할건지
 
 def distance(c):
     dis = 500000-((500-c[0])**2 + (500-c[1])**2)
-    return dis
+    return dis      # 변위 (0~500000)
 
 
 with open("log.txt", "w") as g:
@@ -80,7 +80,7 @@ def processing(current_coordinates, attempts, history):
     return [score, history_to_append]
 
 
-histories = []      # [좌표, 거리, 시도횟수, 기록, 점수]
+histories = []      # [좌표, 변위, 시도횟수, 기록, 점수]
 current_coordinates = [0, 0]
 final_result = []   # 최종적으로 시뮬레이션되는 개체들
 
@@ -97,26 +97,8 @@ for i in range(initial_generation):         # 초깃값 생성
         else:
             break
 
-    # history = history[:len(history)-1]      # 벽에 닿은 이동 방향(마지막 방향)을 삭제함
-
     score = processing(current_coordinates, attempts, history)[0]
     histories.append(processing(current_coordinates, attempts, history)[1])
-
-    # with open("log.txt", "a") as f:       # log.txt 저장
-    #     f.write("case " + str(i+1))
-    #     f.write("\n")
-    #     f.write("current_coordinates : " + str(current_coordinates))
-    #     f.write("\n")
-    #     f.write("distance : " + str(distance(current_coordinates)))
-    #     f.write("\n")
-    #     f.write("attempts : " + str(attempts))
-    #     f.write("\n")
-    #     f.write("history : " + str(history))
-    #     f.write("\n")
-    #     f.write("score : " + str(score))
-    #     f.write("\n")
-    #     f.write("-----------------")
-    #     f.write("\n")
 
 
 histories_sorted = sorted(histories, key=lambda x: x[4], reverse=True)
@@ -130,7 +112,7 @@ print(new_generation_basis)
 
 for i in range(n_generation-1):      # 세대 수
 
-    histories = []      # [좌표, 거리, 시도횟수, 기록, 점수]
+    histories = []      # [좌표, 변위, 시도횟수, 기록, 점수]
     current_coordinates = [0, 0]
 
     for i in new_generation_basis:
@@ -143,9 +125,6 @@ for i in range(n_generation-1):      # 세대 수
                 go(j)
                 history.append(j)
                 attempts = attempts + 1
-
-        # if len(i) > len(history):                  # 만약 입력한 것보다 덜 이동 했다면(벽에 닿아서 끝남)
-        #     history = history[:len(history)-1]      # 벽에 닿은 이동 방향(마지막 방향)을 삭제함
 
         score = processing(current_coordinates, attempts, history)[0]
         histories.append(processing(current_coordinates, attempts, history)[1])
@@ -173,9 +152,6 @@ for i in new_generation_basis:
             go(j)
             history.append(j)
             attempts = attempts + 1
-
-    # if len(i) > len(history):                  # 만약 입력한 것보다 덜 이동 했다면(벽에 닿아서 끝났다면)
-    #     history = history[:len(history)-1]      # 벽에 닿은 이동 방향(마지막 방향)을 삭제함
 
     score = processing(current_coordinates, attempts, history)[0]
     histories.append(processing(current_coordinates, attempts, history)[1])
